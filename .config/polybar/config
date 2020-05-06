@@ -1,0 +1,261 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #888
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/main]
+monitor = ${env:MONITOR:eDP-1}
+width = 100%
+height = 2.5%
+radius = 6.0
+fixed-center = false
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+line-size = 2
+padding = 1
+module-margin = 1
+
+font-0 = "FiraCode Nerd Font Mono:size=10;1"
+font-1 = "Noto Sans Mono:size=10;1"
+font-2 = "Noto Sans Mono:size=10;1"
+font-3 = "Noto Sans Symbols:size=10;1"
+font-4 = "Noto Sans Symbols2:size=10;1"
+
+modules-left = date ewmh xwindow
+modules-center =
+modules-right = github eth wlan cpu battery networkspeedup networkspeeddown
+
+tray-position = right
+tray-padding = 2
+tray-maxsize = 24
+
+[global/wm]
+margin-top = 0
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+
+label-focused = " %name% "
+label-focused-underline = #fba922
+
+label-occupied = " %name% "
+label-occupied-foreground = #ffaa00
+
+label-urgent = " %name% "
+label-urgent-underline = #9b0a20
+
+label-empty = " %name% "
+label-empty-foreground = #555555
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "💻 "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "🗍 "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4bffdc
+label = %percentage_used:2%%
+
+[module/wlan]
+type = internal/network
+interface = wlp6s0
+interval = 5.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+label-disconnected =
+
+ramp-signal-0 = 🌧
+ramp-signal-1 = 🌦
+ramp-signal-2 = 🌥
+ramp-signal-3 = 🌤
+ramp-signal-4 = 🌣
+
+[module/eth]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = "🖧 "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+
+; 上行箭头
+[module/networkspeedup]
+type = internal/network
+interface = wlp6s0
+; enp7s0 or
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = ""
+format-connected-prefix-foreground = #5b
+
+; 下行箭头
+[module/networkspeeddown]
+type = internal/network
+interface = wlp6s0
+;enp7s0 or wlp6s0
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = ""
+format-connected-prefix-foreground = #5b
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+; Note: Neither <desktop-name> nor <icon> can contain a semicolon (;)
+icon-0 = code;♚
+icon-1 = office;♛
+icon-2 = graphics;♜
+icon-3 = mail;♝
+icon-4 = web;♞
+icon-default = ♟
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active = %icon% %name%
+label-active-foreground = #ffffff
+label-active-background = #3f3f3f
+label-active-underline = #fba922
+
+; (unreleased)
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = #555555
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = #55
+
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%a %d"
+date-alt = %a %b %d
+
+time = %I:%M
+time-alt = %I:%M%p
+
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/github]
+type = internal/github
+token = ${file:/home/bobo/.config/github/notifications.token}
+user = jonhoo
+empty-notifications = false
+;label = %{u#ff9900 +u} %notifications% %{u-}
+label = %{u#0099ff +u} 📫 %{u-}
+interval = 10
+
+[settings]
+screenchange-reload = true
+
+; vim:ft=dosini
