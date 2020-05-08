@@ -191,3 +191,4 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id polybar --reload main
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/wallpaper.png
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-clipman
