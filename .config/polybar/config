@@ -232,13 +232,13 @@ label-empty-foreground = #55
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = "%a %d"
 date-alt = %a %b %d
 
-time = %I:%M
-time-alt = %I:%M%p
+time = %I:%M:%S
+time-alt = %I:%M:%S%p
 
 format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}

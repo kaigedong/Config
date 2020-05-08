@@ -20,11 +20,6 @@ set -xg https_proxy http://127.0.0.1:6666
 # git config --global --unset https.proxy
 # git config --global --unset http.proxy
 
-# pyenv
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-pyenv init - | source
-
 #GOlang
 set -xg GOPATH $HOME/go
 set -Ux fish_user_paths $GOPATH/bin $fish_user_paths
@@ -40,6 +35,11 @@ set -xg WASM_BUILD_TYPE release
 # set for download electron.
 #npm config set registry https://registry.npm.taobao.org/
 #npm config set ELECTRON_MIRROR http://npm.taobao.org/mirrors/electron/
+
+# pyenv
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+pyenv init - | source
 
 if status --is-interactive
     tmux ^ /dev/null; and exec true
