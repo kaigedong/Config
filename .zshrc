@@ -16,7 +16,7 @@ prompt pure
 # DISABLE_UPDATE_PROMPT="true"
 # export UPDATE_ZSH_DAYS=13
 # DISABLE_MAGIC_FUNCTIONS=true
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -92,7 +92,7 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 export GO111MODULE=on
-# export GOPROXY=https://mirrors.aliyun.com/goproxy/
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # ibus engine libpinyin
 # screenfetch -A 'Arch Linux' | lolcat
