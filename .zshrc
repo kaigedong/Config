@@ -71,6 +71,7 @@ alias emacs="emacs -nw"
 alias vim="emacs"
 alias ls="lsd"
 alias la="ls -lth"
+alias sabaki="/opt/Sabaki/sabaki"
 
 #rustlang
 #
@@ -92,7 +93,12 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 export GO111MODULE=on
-export GOPROXY=https://mirrors.aliyun.com/goproxy/
+#export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # ibus engine libpinyin
 # screenfetch -A 'Arch Linux' | lolcat
+
+
+#tmux
+# -2 to use 256 color
+command -v tmux >/dev/null && ${TMUX+:} exec tmux -2
