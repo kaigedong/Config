@@ -8,7 +8,6 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
-
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
@@ -74,31 +73,29 @@ alias la="ls -lth"
 alias sabaki="/opt/Sabaki/sabaki"
 
 #rustlang
-#
-# update toolchain
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-# update rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-source $HOME/.cargo/env
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static         # update toolchain
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup  # update rustup
 export WASM_BUILD_TYPE=release
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 #GOlang
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
 export GO111MODULE=on
 #export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # ibus engine libpinyin
 # screenfetch -A 'Arch Linux' | lolcat
 
-
 #tmux
-# -2 to use 256 color
-command -v tmux >/dev/null && ${TMUX+:} exec tmux -2
+session="workspace"
+tmux has-session -t $session 2>/dev/null
+if [ $? != 0 ]; then
+  # Set up your session
+  export PATH="$HOME/.cargo/bin:$PYENV_ROOT/bin:$GOPATH/bin:/home/bobo:$PATH"
+
+  eval "$(pyenv init -)"
+  tmux new-session -s $session
+fi
+
