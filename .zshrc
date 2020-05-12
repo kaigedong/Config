@@ -99,3 +99,4 @@ if [ $? != 0 ]; then
   tmux new-session -s $session
 fi
 
+typeset -U PATH
