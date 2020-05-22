@@ -42,8 +42,8 @@ plugins=(
 # git config --global http.proxy 'socks5://127.0.0.1:2333'
 # git config --global https.proxy 'socks5://127.0.0.1:2333'
 # export all_proxy=http://127.0.0.1:2444
-# export http_proxy=http://127.0.0.1:2444
-# export https_proxy=http://127.0.0.1:2444
+export http_proxy=http://127.0.0.1:6666
+export https_proxy=http://127.0.0.1:6666
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +97,9 @@ if [ $? != 0 ]; then
 
   eval "$(pyenv init -)"
   tmux new-session -s $session
+else
+  # TODO: check if in tmux already
+  tmux attach -t $session
 fi
 
 typeset -U PATH
