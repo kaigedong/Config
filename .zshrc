@@ -96,10 +96,10 @@ if [ $? != 0 ]; then
   export PATH="$HOME/.cargo/bin:$PYENV_ROOT/bin:$GOPATH/bin:/home/bobo:$PATH"
 
   eval "$(pyenv init -)"
-  tmux new-session -s $session
+  tmux new-session -s $session 2>/dev/null
 else
   # TODO: check if in tmux already
-  tmux attach -t $session
+  tmux attach -t $session 2>/dev/null
 fi
 
 typeset -U PATH
