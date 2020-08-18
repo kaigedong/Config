@@ -121,15 +121,12 @@ export https_proxy="http://127.0.0.1:10809"
 #rustlang
 #export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static         # update toolchain
 #export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup  # update rustup
-
 #export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup  # for stable
-
 export RUSTUP_DIST_SERVER=http://mirrors.rustcc.cn
 export RUSTUP_UPDATE_ROOT=http://mirrors.rustcc.cn/rustup
+export WASM_BUILD_TYPE=release
 
 export PATH=$PATH:$HOME/.cargo/bin
-
-export WASM_BUILD_TYPE=release
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -142,7 +139,7 @@ export GOPATH="$HOME/go"
 export GO111MODULE=on
 #export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
-# ibus engine libpinyin
+#ibus engine libpinyin
 # screenfetch -A 'Arch Linux' | lolcat
 
 #A tool to infer progress speed
